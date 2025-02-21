@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HCNDNJ+m3cU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\1255050\\Desktop\\repositorio\\RotinaDiaria\\RotinaDiaria.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\1255050\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.2\\microsoft.aspnetcore.openapi.9.0.2.nupkg.sha512",
+    "C:\\Users\\1255050\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

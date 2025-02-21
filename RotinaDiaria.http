@@ -1,0 +1,6 @@
+@RotinaDiaria_HostAddress = http://localhost:5277
+
+GET {{RotinaDiaria_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
