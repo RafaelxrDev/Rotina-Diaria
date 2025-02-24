@@ -31,3 +31,7 @@ C:\Users\1255050\Desktop\repositorio\RotinaDiaria\obj\Debug\net9.0\refint\Rotina
 C:\Users\1255050\Desktop\repositorio\RotinaDiaria\obj\Debug\net9.0\RotinaDiaria.pdb
 C:\Users\1255050\Desktop\repositorio\RotinaDiaria\obj\Debug\net9.0\RotinaDiaria.genruntimeconfig.cache
 C:\Users\1255050\Desktop\repositorio\RotinaDiaria\obj\Debug\net9.0\ref\RotinaDiaria.dll
+C:\Users\1255050\Desktop\repositorio\RotinaDiaria\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\1255050\Desktop\repositorio\RotinaDiaria\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\1255050\Desktop\repositorio\RotinaDiaria\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\1255050\Desktop\repositorio\RotinaDiaria\obj\Debug\net9.0\RotinaDiaria.sourcelink.json
