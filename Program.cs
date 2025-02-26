@@ -1,6 +1,14 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+using RotinaDiaria.Config;
+
+var builder = WebApplication.CreateBuilder(args):
+
+builder.Services.Configure<MongoDBSettings>(
+    builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<MongoDBConfig>();
+
 
 
 // Add services to the container.
