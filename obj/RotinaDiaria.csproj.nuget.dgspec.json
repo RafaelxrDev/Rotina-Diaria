@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-diaria\\RotinaDiaria.csproj": {}
+    "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-Diaria\\RotinaDiaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-diaria\\RotinaDiaria.csproj": {
+    "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-Diaria\\RotinaDiaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-diaria\\RotinaDiaria.csproj",
+        "projectUniqueName": "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-Diaria\\RotinaDiaria.csproj",
         "projectName": "RotinaDiaria",
-        "projectPath": "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-diaria\\RotinaDiaria.csproj",
+        "projectPath": "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-Diaria\\RotinaDiaria.csproj",
         "packagesPath": "C:\\Users\\1255050\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-diaria\\obj\\",
+        "outputPath": "C:\\Users\\1255050\\Desktop\\repositorio\\Rotina-Diaria\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -5,21 +5,23 @@ namespace RotinaDiaria.Config
 {
     public class MongoDBConfig
     {
-        private readonly IMongoDatebase _datebase; 
+        private readonly IMongoDatabase _database; 
+
         public MongoDBConfig(IOptions<MongoDBSettings> settings)
         {
             var client = new MongoClient(settings.Value.ConnectionString);
-            _datebase = client.GetDatebase(settings.Value.DatebaseName);
+            _database = client.GetDatabase(settings.Value.DatabaseName);
         }
 
         public IMongoCollection<T> GetCollection<T>(string name)
         {
-            return _datebase.GetCollection<T>(name);
+            return _database.GetCollection<T>(name);
         }
     }
+
     public class MongoDBSettings
     {
-        public string ConnectionString {get;set;} = string.Empty;
-        public string DatebaseName {get;set;} = string.Empty;
+        public string ConnectionString { get; set; } = string.Empty;
+        public string DatabaseName { get; set; } = string.Empty; // Nome corrigido
     }
 }

@@ -1,54 +1,65 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RotinaDiaria.Models;
+using RotinaDiaria.Repository;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RotinaDiaria.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class CompromissoController : ControllerBase
     {
-        private static List<Compromisso> compromissos = new List<Compromisso>(); 
+        private readonly CompromissoRepository _compromissoRepository;
+
+        public CompromissoController(CompromissoRepository compromissoRepository)
+        {
+            _compromissoRepository = compromissoRepository;
+        }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult<List<Compromisso>>> Get()
         {
+            var compromissos = await _compromissoRepository.GetAllAsync();
             return Ok(compromissos);
         }
 
-        [HttpPost]
-        public IActionResult Post(Compromisso compromisso)  
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Compromisso>> GetById(string id) // 🔥 Ajustado para string
         {
-            compromisso.Id = compromissos.Count + 1;
-            compromissos.Add(compromisso);
-            return CreatedAtAction(nameof(Get), new { id = compromisso.Id }, compromisso);
+            var compromisso = await _compromissoRepository.GetByIdAsync(id);
+            if (compromisso == null)
+                return NotFound();
+
+            return Ok(compromisso);
         }
 
-        [HttpPut]
-        public IActionResult Put (int Id, Compromisso compromissoAtualizado)
-
-        
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Compromisso compromisso)
         {
-            var compromisso = compromissos.FirstOrDefault(c => c.Id == Id);
+            await _compromissoRepository.CreateAsync(compromisso);
+            return CreatedAtAction(nameof(GetById), new { id = compromisso.Id }, compromisso);
+        }
 
-            if (compromisso == null) return NotFound();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, [FromBody] Compromisso compromissoAtualizado) // 🔥 Ajustado para string
+        {
+            var compromissoExistente = await _compromissoRepository.GetByIdAsync(id);
+            if (compromissoExistente == null)
+                return NotFound();
 
-            compromisso.Nome = compromissoAtualizado.Nome;
-            compromisso.Tipo = compromissoAtualizado.Tipo;
-            compromisso.Hora = compromissoAtualizado.Hora;
-            compromisso.Duracao = compromissoAtualizado.Duracao;
-
-
+            await _compromissoRepository.UpdateAsync(id, compromissoAtualizado);
             return NoContent();
         }
-        [HttpDelete("{Id}")]
-        public IActionResult Delete(int Id)
-        {
-            var compromisso = compromissos.FirstOrDefault(c => c.Id ==Id);
-            if (compromisso == null) return NotFound();
 
-            compromissos.Remove(compromisso);
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id) // 🔥 Ajustado para string
+        {
+            var compromissoExistente = await _compromissoRepository.GetByIdAsync(id);
+            if (compromissoExistente == null)
+                return NotFound();
+
+            await _compromissoRepository.DeleteAsync(id);
             return NoContent();
         }
     }

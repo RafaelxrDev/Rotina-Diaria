@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using MongoDB.Bson;
 using RotinaDiaria.Models;
 using RotinaDiaria.Config;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace RotinaDiaria.Repository
 
         public async Task<Compromisso> GetByIdAsync(string id)
         {
-            return await _compromissos.Find(c => c.Id == id).FirstOrDefaultAsync();
+            var objectId = new ObjectId(id); // Convertendo a string para ObjectId
+            return await _compromissos.Find(c => c.Id == objectId).FirstOrDefaultAsync();
         }
 
         public async Task CreateAsync(Compromisso compromisso)
@@ -31,13 +33,19 @@ namespace RotinaDiaria.Repository
         }
 
         public async Task UpdateAsync(string id, Compromisso compromissoAtualizado)
-        {
-            await _compromissos.ReplaceOneAsync(c => c.Id == id, compromissoAtualizado);
-        }
+{
+    var objectId = new ObjectId(id); // Convertendo a string para ObjectId
+
+    // Assegure-se de que o campo 'Id' não será alterado na atualização
+    compromissoAtualizado.Id = objectId; // Mantendo o Id original
+
+    await _compromissos.ReplaceOneAsync(c => c.Id == objectId, compromissoAtualizado);
+}
 
         public async Task DeleteAsync(string id)
         {
-            await _compromissos.DeleteOneAsync(c => c.Id == id);
+            var objectId = new ObjectId(id); // Convertendo a string para ObjectId
+            await _compromissos.DeleteOneAsync(c => c.Id == objectId);
         }
     }
 }
